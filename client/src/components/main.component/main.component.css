@@ -1,0 +1,48 @@
+/*#main-component {*/
+/*  background-color: #42a5f5;*/
+/*  height: 100vh;*/
+/*}*/
+
+#main-component {
+    background-image:
+            linear-gradient(45deg, rgba(253, 252, 251, 0.8), rgba(226, 209, 195, 0.3) 100%),
+            url(../../images/lightning-5905335.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    min-height: 100vh;
+}
+
+#main-component h6 {
+  line-height: 1.7;
+}
+
+@media only screen and (max-width: 400px) {
+  #main-component .animated img {
+    max-height: 50vh;
+    transform: translateX(-50%);
+    left: 50%;
+    position: absolute;
+  }
+}
+@media only screen and (max-width: 767px) {
+  #main-component .animated img {
+    max-height: 35vh;
+    transform: translateX(-50%);
+    left: 50%;
+  }
+}
+
+@media (max-width: 767px) and (orientation: landscape) {
+  #main-component .animated img {
+    max-height: 50vh;
+    transform: translateX(-50%);
+    left: 50%;
+    position: relative;
+  }
+}
+@media (max-width: 1000px) and (orientation: landscape) {
+  #main-component .view {
+    min-height: 150vh;
+  }
+}

@@ -1,0 +1,12 @@
+#app-bar {
+  background-color: transparent;
+  text-align: center;
+  font-size: 1.8rem;
+  color: black;
+  font-family: Syne, sans-serif;
+}
+
+#logout-link {
+  text-decoration: none;
+}
+
