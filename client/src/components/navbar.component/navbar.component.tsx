@@ -4,9 +4,10 @@ import {Link, useHistory} from "react-router-dom";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
-import {Tab, Tabs} from "@material-ui/core";
+import {IconButton, Menu, MenuItem, Tab, Tabs} from "@material-ui/core";
 import PhoneIcon from '@material-ui/icons/Phone';
 import "./navbar.component.css";
+import { AccountCircle } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -37,6 +38,20 @@ export const NavbarComponent: React.FC<NavProps> = ({user}) => {
     const history = useHistory();
     const classes = useStyles();
     const [tabValue, setTabValue] = React.useState(0);
+    const [auth, setAuth] = React.useState(true);
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setAuth(event.target.checked);
+  };
+
+  const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
     const handleTabChange = (event: any, newValue: number) => {
         setTabValue(newValue);
         switch (newValue) {
@@ -70,15 +85,39 @@ export const NavbarComponent: React.FC<NavProps> = ({user}) => {
                         <Tab label={<span className={classes.customStyleOnTab}>Store</span>}/>
                         <Tab label={<span className={classes.customStyleOnTab}>About</span>}/>
                     </Tabs>
-                    <Link id="logout-link" to="/logout">
-                        {user.name != null ?
-                            <Button
-                                variant="contained"
-                                color="secondary"
-                            >
-                                Log Out
-                            </Button> : null}
-                    </Link>
+                    {auth && (
+            <div>
+              <IconButton
+                // size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleMenu}
+                color="inherit"
+              >
+                <AccountCircle />
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorEl}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+              >
+                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                <MenuItem onClick={handleClose}>My account</MenuItem>
+              </Menu>
+            </div>
+          )}
+                    
                 </Toolbar>
             </AppBar>
         </div>
