@@ -1,0 +1,29 @@
+#paper-container{
+    min-width: 20vw;
+    max-width: 50vw;
+    margin: 10px auto auto;
+    background: transparent;
+    animation: rotateIn;
+    animation-duration: 0.8s;
+}
+
+#grid-container{
+    text-align: center;
+    font-size: 3rem;
+    color: black;
+    font-family: 'Great Vibes', cursive;
+}
+
+#signup-container{
+    text-align: center;
+    font-size: 1.8rem;
+    color: black;
+    font-family: 'Great Vibes', cursive;
+}
+
+#signup-button{
+    color: black;
+    font-size: 1.5rem;
+}
+
+a {text-decoration: none;}

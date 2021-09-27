@@ -3,11 +3,8 @@ import {createStyles, makeStyles, Theme} from "@material-ui/core/styles";
 import {Link, useHistory} from "react-router-dom";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import Button from "@material-ui/core/Button";
-import {IconButton, Menu, MenuItem, Tab, Tabs} from "@material-ui/core";
-import PhoneIcon from '@material-ui/icons/Phone';
+import {Avatar, Button, Grid, Tab, Tabs} from "@material-ui/core";
 import "./navbar.component.css";
-import { AccountCircle } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -38,20 +35,7 @@ export const NavbarComponent: React.FC<NavProps> = ({user}) => {
     const history = useHistory();
     const classes = useStyles();
     const [tabValue, setTabValue] = React.useState(0);
-    const [auth, setAuth] = React.useState(true);
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setAuth(event.target.checked);
-  };
-
-  const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
     const handleTabChange = (event: any, newValue: number) => {
         setTabValue(newValue);
         switch (newValue) {
@@ -73,51 +57,30 @@ export const NavbarComponent: React.FC<NavProps> = ({user}) => {
         <div className={classes.root}>
             <AppBar position="sticky" id="app-bar" elevation={0}>
                 <Toolbar id="tool-bar">
-                    <Tabs
-                        onChange={handleTabChange}
-                        textColor="inherit"
-                        classes={{
-                            indicator: classes.indicator,
-                        }}
-                        value={tabValue}
-                    >
-                        <Tab icon={<PhoneIcon/>}/>
-                        <Tab label={<span className={classes.customStyleOnTab}>Store</span>}/>
-                        <Tab label={<span className={classes.customStyleOnTab}>About</span>}/>
-                    </Tabs>
-                    {auth && (
-            <div>
-              <IconButton
-                // size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleMenu}
-                color="inherit"
-              >
-                <AccountCircle />
-              </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorEl}
-                anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                open={Boolean(anchorEl)}
-                onClose={handleClose}
-              >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
-              </Menu>
-            </div>
-          )}
-                    
+                    <Grid container justify="space-between" spacing={4}>
+                        <Grid item>
+                            <Tabs
+                                onChange={handleTabChange}
+                                textColor="inherit"
+                                classes={{
+                                    indicator: classes.indicator,
+                                }}
+                                value={tabValue}
+                            >
+                                <Tab icon={<Avatar alt="test avatar" src="/logo.png"/>}/>
+                                <Tab label={<span className={classes.customStyleOnTab}>Store</span>}/>
+                                <Tab label={<span className={classes.customStyleOnTab}>About</span>}/>
+                            </Tabs>
+                        </Grid>
+                        <Grid item>
+                            <Link id="login-link" to="/login">
+                                {user.name ?
+                                    <Button id="login-link" color="inherit">Sign Out</Button> :
+                                    <Button id="login-link" color="inherit">Sign In</Button>
+                                }
+                            </Link>
+                        </Grid>
+                    </Grid>
                 </Toolbar>
             </AppBar>
         </div>

@@ -1,6 +1,47 @@
+@import "~animate.css";
+
 #landing-text {
     text-align: center;
-    font-size: 1.2rem;
+    font-size: 5rem;
     color: black;
-    font-family: Syne, sans-serif;
+    font-family: 'Great Vibes', cursive;
+    animation: tracking-in-expand 2s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+    margin-top: 10px;
+    padding: 5px;
+}
+
+.body-format, #landing-in-left, #landing-in-right {
+    text-align: center;
+    color: black;
+    padding: 20px;
+}
+
+#typo-text {
+    font-size: 2rem;
+    font-family: "Syne", sans-serif;
+}
+
+#landing-in-left {
+    background: #61dafb;
+    animation: fadeInLeft;
+    animation-duration: 1.5s;
+}
+
+#landing-in-right {
+    background: yellow;
+    animation: fadeInRight;
+    animation-duration: 1.5s;
+}
+
+@keyframes tracking-in-expand {
+    0% {
+        letter-spacing: -0.5em;
+        opacity: 0;
+    }
+    40% {
+        opacity: 0.6;
+    }
+    100% {
+        opacity: 1;
+    }
 }

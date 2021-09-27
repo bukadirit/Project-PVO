@@ -2,6 +2,7 @@ import React from "react";
 import "./landing.component.css"
 import {createStyles, makeStyles, Theme} from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
+import {Grid} from "@material-ui/core";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -14,21 +15,37 @@ const useStyles = makeStyles((theme: Theme) =>
         title: {
             flexGrow: 1,
         },
+        gridItem: {
+            padding: theme.spacing(1)
+        }
     })
 );
 
 export const LandingComponent: React.FC = () => {
     const classes = useStyles();
     return (
-        <div id={"landingComponent"}>
-            <Typography variant="h6" className={classes.title} id={"landing-text"}>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
-                into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
-                release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
-                software like Aldus PageMaker including versions of Lorem Ipsum.
-            </Typography>
-        </div>
+        <React.Fragment>
+            <Grid container spacing={0} justifyContent="space-around" alignItems="center" id={"landingComponent"}>
+                <Grid item xs={6} md={12} className={classes.gridItem}>
+                    <Typography variant="h6" className={classes.title} id={"landing-text"}>
+                        pVo
+                    </Typography>
+                </Grid>
+                <Grid item xs={6} md={6} className={classes.gridItem} id={"landing-in-left"}>
+                    <Typography variant="h6" className={classes.title} id={"typo-text"}>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aspernatur, distinctio doloribus
+                        dolorum fuga vel velit veritatis! Error, eum, ipsum? Aliquam aliquid, amet at ea minus molestias
+                        neque sint? Laudantium?
+                    </Typography>
+                </Grid>
+                <Grid item xs={6} md={6} className={classes.gridItem} id={"landing-in-right"}>
+                    <Typography variant="h6" className={classes.title} id={"typo-text"}>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad at blanditiis commodi cumque
+                        deleniti dignissimos dolorum eligendi esse illum itaque laborum magnam modi natus nihil,
+                        obcaecati praesentium repellendus reprehenderit voluptatem.
+                    </Typography>
+                </Grid>
+            </Grid>
+        </React.Fragment>
     );
 }
